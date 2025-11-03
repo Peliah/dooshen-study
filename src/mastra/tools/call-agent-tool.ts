@@ -16,7 +16,7 @@ export const callAgentTool = createTool({
     agentId: z
       .string()
       .describe(
-        'The ID of the agent to call (e.g., "weatherAgent", "animeAgent", "studyBuddyAgent")'
+        'The ID of the agent to call (e.g., "weatherAgent", "animeAgent")'
       ),
     message: z
       .string()

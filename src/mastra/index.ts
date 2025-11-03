@@ -5,8 +5,6 @@ import { LibSQLStore } from '@mastra/libsql';
 import { weatherWorkflow } from './workflows/weather-workflow';
 import { weatherAgent } from './agents/weather-agent';
 import { toolCallAppropriatenessScorer, completenessScorer, translationScorer } from './scorers/weather-scorer';
-import { documentIngestionWorkflow } from './workflows/document-ingestion-workflow';
-import { studyBuddyAgent } from './agents/study-buddy-agent';
 import { animeAgent } from './agents/anime-agent';
 import { animeQuoteVerificationWorkflow } from './workflows/anime-quote-verification-workflow';
 
@@ -14,13 +12,13 @@ import { animeQuoteVerificationWorkflow } from './workflows/anime-quote-verifica
 import {a2aAgentRoute, a2aAgentCardRoute, a2aAgentMessageRoute } from './routes/a2a-agent-route';
 
 export const mastra = new Mastra({
-  workflows: { weatherWorkflow, documentIngestionWorkflow, animeQuoteVerificationWorkflow },
-  agents: { weatherAgent, studyBuddyAgent, animeAgent },
+  workflows: { weatherWorkflow, animeQuoteVerificationWorkflow },
+  agents: { weatherAgent, animeAgent },
   scorers: { toolCallAppropriatenessScorer, completenessScorer, translationScorer },
   storage: new LibSQLStore({
     // stores observability, scores, ... into memory storage, if it needs to persist, change to file:../mastra.db
     // url: ":memory:",
-    url: "file:./study-buddy.db",
+    url: "file:./mastra.db",
   }),
   logger: new PinoLogger({
     name: 'Mastra',
