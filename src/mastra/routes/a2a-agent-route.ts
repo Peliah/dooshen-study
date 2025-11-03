@@ -37,7 +37,7 @@ export const a2aAgentRoute = registerApiRoute('/a2a/agent/:agentId', {
                 'Invalid Request: jsonrpc must be "2.0" and id is required',
             },
           },
-          400
+          200
         );
       }
 
@@ -52,7 +52,7 @@ export const a2aAgentRoute = registerApiRoute('/a2a/agent/:agentId', {
               message: `Agent '${agentId}' not found`,
             },
           },
-          404
+          200
         );
       }
 
